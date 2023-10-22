@@ -3,6 +3,8 @@ let userseq = [];
 let start = false;
 let Level = 0;
 let h2 = document.querySelector("h2");
+let h1 = document.querySelector(".h1");
+h1.innerText = 0;
 let btns = ["yellow","red","green","purple"];
 
 document.addEventListener("keypress", function () {
@@ -10,7 +12,7 @@ document.addEventListener("keypress", function () {
         console.log("start the game");
         start = true;
         levelup();
-    }
+    } 
 });
 
 function btnflash(btn){
@@ -53,16 +55,23 @@ function checkans(idx){
         if(userseq.length == gameseq.length){
           setTimeout(levelup,500);
         }
-    }else{
-        h2.innerText = `Game is Over  at Level ${Level} press any key to play again `;
-        reset();
+    } 
+     else {
+            h2.innerText = `Game is Over  at Level ${Level} press any key to play again `;
+             highscore();
+            reset();
+            
+        }
     }
-}
-
+    function highscore() {
+        if (Level > parseInt(h1.innerText)) {
+            h1.innerText = Level;
+        }
+    }
+   
 function reset(){
     start = false;
     gameseq = [];
     userseq = [];
     Level = 0;
-
 }
