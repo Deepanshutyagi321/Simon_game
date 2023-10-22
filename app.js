@@ -1,4 +1,4 @@
-const gameseq = [];
+let gameseq = [];
 let userseq = [];
 let start = false;
 let Level = 0;
@@ -17,7 +17,7 @@ function btnflash(btn){
     btn.classList.add("flash")
     setTimeout(function() {
     btn.classList.remove("flash")
-    }, 250);
+    }, 1000);
 }
 
 function levelup() {
@@ -55,5 +55,14 @@ function checkans(idx){
         }
     }else{
         h2.innerText = `Game is Over  at Level ${Level} press any key to play again `;
+        reset();
     }
+}
+
+function reset(){
+    start = false;
+    gameseq = [];
+    userseq = [];
+    Level = 0;
+
 }
