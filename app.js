@@ -16,10 +16,12 @@ document.addEventListener("keypress", function () {
 });
 
 function btnflash(btn){
+   if(start == true){
     btn.classList.add("flash")
     setTimeout(function() {
     btn.classList.remove("flash")
-    }, 1000);
+    }, 500);
+   } 
 }
 
 function levelup() {
@@ -57,7 +59,7 @@ function checkans(idx){
         }
     } 
      else {
-            h2.innerText = `Game is Over  at Level ${Level} press any key to play again `;
+            gamescore();
              highscore();
             reset();
             
@@ -74,4 +76,9 @@ function reset(){
     gameseq = [];
     userseq = [];
     Level = 0;
+}
+function gamescore(){
+    if(start == true){
+        h2.innerText = `Game is Over  Score ${Level} Press any key to play again `;
+    }
 }
